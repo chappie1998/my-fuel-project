@@ -38,7 +38,7 @@ export default function Home() {
   };
   const tokenContract = async () => {
     const contractId =
-      "0x77c44f9fde5ff86f707063ab23379f7cf710c252fc2a6bd0157d9a99bcfd26c0";
+      "0x49b3b78cf8f5a529b3cd67cbe29d7cc9abfddbdbd21e48e5302b190a4c2886dd";
     const wallet = await getWallet();
     return TestContractAbi__factory.connect(contractId, wallet);
   };
@@ -50,18 +50,19 @@ export default function Home() {
   const mint = async () => {
     const contract = await tokenContract();
     const address = { Address: { bits: admin } };
-    const subid = "0x0000000000000000000000000000000000000000000000000000000000000000"
+    const subid = "0x0000000000000000000000000000000000000000000000000000000000000001"
     const mint = await contract.functions
       .mint(address, subid, 1)
       .txParams({ gasLimit: 500000 })
       .call();
     console.log("batch_mint: ", mint);
+    console.log("asset: ", mint.transactionResult.mintedAssets[0].assetId);
   };
 
   const set_metadata = async () => {
     const metadata = {String: "test"};
     const contract = await tokenContract();
-    const asset = { bits: "0xf8facdae20f61880164bd84f25c3996cd26454b45be66bc88feaeec79ff73b10" };
+    const asset = { bits: "0x2701a55b92500b6333964bb5f8df83a506f370a8860f4cc70a73f2e8342a4f6f" };
     const call = await contract.functions
       .set_metadata(asset, "0", metadata)
       .txParams({ gasLimit: 500000 })
@@ -71,7 +72,7 @@ export default function Home() {
 
   const metadata = async () => {
     const contract = await tokenContract();
-    const asset = { bits: "0x1a8f243797bc646c3313bbeffcafcfc219842ae7f090c075715146597b66ef7e" };
+    const asset = { bits: "0x2701a55b92500b6333964bb5f8df83a506f370a8860f4cc70a73f2e8342a4f6f" };
     const call = await contract.functions
       .metadata(asset, "0")
       .txParams({
