@@ -1,0 +1,57 @@
+.shimmer-line {
+  height: 1rem;
+  background: #777;
+}
+.shimmer-circle {
+  background: #777;
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+}
+.shimmer-box {
+  height: 18rem;
+  width: 18rem;
+  background: #777;
+}
+.shimmer-br {
+  border-radius: 0.5rem;
+}
+.shimmer-w-half {
+  width: 50%;
+}
+.shimmer-w-full {
+  width: 100%;
+}
+.shimmer-h-5 {
+  height: 5rem;
+}
+.shimmer-h-10 {
+  height: 10rem;
+}
+.shimmer-wrapper {
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  animation: shimmer-full-view 0.5s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.shimmer-animate {
+  animation: shimmer-animation 3s infinite linear;
+  background: linear-gradient(to right, #a7a7a7 4%, #999696 25%, #8d8d8d 36%);
+  background-size: 1000px 100%;
+}
+@keyframes shimmer-full-view {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+@keyframes shimmer-animation {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
